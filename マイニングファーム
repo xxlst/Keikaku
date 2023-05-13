@@ -6,12 +6,14 @@ int income = 0;
 void intrustion(){
     cout<<"Добро пожаловать в ферму MINING"<<endl;
     cout<<"Правила мега просты. Покупаешь майнеры монеты и кайфуешь"<<endl<<"Если хочешь попасть в магазин пиши *м*"<<endl<<"Если хочешь выйти(прогресс невозможно сохранить) пиши *в*"<<endl;
-    cout<<"Твой баланс: 10$";
+    cout<<"Твой баланс: 10$"<<endl;
 }
  
 void store(){
     int item = 0; string prvrk;
     item=0;
+    while (true){
+    cout<<endl<<endl<<"-----------------------------------------------------------"<<endl;
     cout<<"МАГАЗИН"<<endl<<"Пишите номер товара для покупки"<<endl;
     cout<<"1.DIRT БИТКОИН МАЙНЕР +1 доход - 10$"<<endl;
     cout<<"2.COAL БИТКОИН МАЙНЕР +5 доход - 50$"<<endl;
@@ -19,61 +21,79 @@ void store(){
     cout<<"4.GOLD БИТКОИН МАЙНЕР +50 доход - 250$"<<endl;
     cout<<"5.EMERALD БИТКОИН МАЙНЕР +100 доход - 500$"<<endl;
     cout<<"6.DIAMOND БИТКОИН МАЙНЕР +150 доход - 1000$"<<endl;
+    cout<<"-----------------------------------------------------------"<<endl;
     cin>>item;
     if (item==1 or item==2 or item==3 or item==4 or item==5 or item==6){
-    while (true){
     if (item==1 and balance>=10){
         balance-=10;
         income+=1;
-        cout<<"Вы успешно купили DIRT МАЙНЕР";
+        cout<<"Вы успешно купили DIRT МАЙНЕР"<<endl;
         break;}
     if (item==2 and balance>=50){
         balance-=50;
         income+=5;
-        cout<<"Вы успешно купили COAL МАЙНЕР";
+        cout<<"Вы успешно купили COAL МАЙНЕР"<<endl;
         break;}
     if (item==3 and balance>=100){
         balance-=100;
         income+=10;
-        cout<<"Вы успешно купили SILVER МАЙНЕР";
+        cout<<"Вы успешно купили SILVER МАЙНЕР"<<endl;
         break;}
     if (item==4 and balance>=250){
         balance-=250;
         income+=50;
-        cout<<"Вы успешно купили GOLD БИТКОИН МАЙНЕР";
+        cout<<"Вы успешно купили GOLD БИТКОИН МАЙНЕР"<<endl;
         break;}
     if (item==5 and balance>=500){
         balance-=500;
         income+=100;
-        cout<<"Вы успешно купили EMERALD БИТКОИН МАЙНЕР";
+        cout<<"Вы успешно купили EMERALD БИТКОИН МАЙНЕР"<<endl;
         break;}
     if (item==6 and balance>=1000){
         balance-=1000;
         income+=150;
-        cout<<"Вы успешно купили DIAMOND БИТКОИН МАЙНЕР";
+        cout<<"Вы успешно купили DIAMOND БИТКОИН МАЙНЕР"<<endl;
         break;
     }else{
         cout<<"У тебя нет денег"<<endl;
         break;
     }
-    }
     }else{
         cout<<"Ты дурак";
+    }
     }
     }
     
  
 int main()
 {
-    string proverka;
+    string proverka, ext;
     intrustion();
+    continuee:
+    cout<<"Приятной игры"<<endl<<"-----------------------------------------------------------"<<endl;
+    proverka="";
     while (proverka!="в"){
         if (proverka=="м"){
             store();
         }
         cin>>proverka;
         balance+=income;
-        cout<<"Твой баланс -> "<<balance<<"$"<<endl<<"Твой доход -> "<<"$"<<income<<endl;
+        cout<<"Твой баланс -> "<<balance<<"$"<<endl<<"Твой доход -> "<<income<<"$"<<endl;
+    }
+    if (proverka=="в"){
+        cout<<"Ты уверен? *ВСЕ ДАННЫЕ СБРОСЯТСЯ*"<<endl<<"да        нет"<<endl;
+        proverka_ext:
+        ext="";
+        cin>>ext;
+        if (ext=="да"){
+            exit;
+        }else{
+            if (ext=="нет"){
+                goto continuee;
+            }else{
+                goto proverka_ext;
+            }
+        }
     }
     return 0;
 }
