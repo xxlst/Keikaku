@@ -1,0 +1,118 @@
+#include <iostream>
+
+using namespace std;
+
+int quantity,i;
+int base[100];
+
+void instruction(){
+    cout<<"Системы множеств и различные операции над ними"<<endl;
+    cout<<"------------------------------------------------------------------------------------"<<endl;
+    cout<<"В данной программе представлено 3 операции для работы над множеством. Само множество задаётся пользователем. Чтобы выбрать какую-либо операцию необходимо сначало ввести множество."<<endl;
+    cout<<"Введите количество элементов в множестве(<10 для адекватной работы программы):"<<endl<<endl;
+}
+
+void instruction2(){
+    cout<<"Теперь вы можете ввести любые целочисленные элементы. Если вам лень, то вместо вас это может сделать random()."<<endl;
+    cout<<"Если хотите сами ввести элеметы введите 1, если через random(), то 2:"<<endl<<endl;
+}
+
+void instruction3(){
+    cout<<"Отлично! Теперь выберите желаюмую операцию:"<<endl<<"Если вас интересует, что означает одна из операций просто напишите дважды номер операции."<<endl;
+    cout<<"1.Булеан."<<endl<<"2.Разбиение."<<endl<<"3.Покрытие."<<endl<<endl;
+}
+
+void showarray(){
+    cout<<"A=[ ";
+    for(i=0;i<quantity;i++){
+        cout<<base[i]<<" ";
+    }
+    cout<<"]"<<endl<<endl;
+}
+
+void help(){
+    cout<<"Справочный материал."<<endl;
+    cout<<"------------------------------------------------------------------------------------"<<endl;
+    cout<<"1.Булеан P(A) - множество всех подмножеств A."<<endl;
+    cout<<"2.Разбиение R(A) - непустые непересекающиеся подмножества множества A, в объединении дающие множество A."<<endl;
+    cout<<"3.Покрытие S(A) - непустые подмножества множества A, в объединение дающие множество А."<<endl<<endl;
+}
+
+void bulean(int n, int i){
+    if (n){
+        if (n&1)
+            cout<<base[i]<<" ";
+        bulean(n >> 1, i + 1);
+    }
+}
+
+void partition(){
+    
+}
+
+void coating(){
+    
+}
+
+
+
+int main()
+{
+    instruction();
+    int oper,prvr,operation,rst;
+    for(i=0 ;i<=100;i++);{
+        base[i]=0;
+    }
+    backk:
+    cin>>quantity;
+    rst=1 << quantity;
+    if (quantity<1 or quantity>9){
+        cout<<"Пожалуйста, введите количества элементов непревышающее 10 и не меньше 1."<<endl;
+        goto backk;
+    }
+    instruction2();
+    backk2:
+    cin>>prvr;
+    if (prvr==1 or prvr==2){
+    if (prvr==1){
+        for(i=0;i<quantity;i++){
+            cout<<"Введите "<<i+1<<" элемент:";
+            cin>>base[i];
+        }
+    }
+    if (prvr==2){
+        cout<<"Начинаем заполнять random()."<<endl;
+        for(i=0;i<quantity;i++){
+            base[i]=rand()%(100-(-100)+1)+(-100);           //пофиксить рандом!
+        }
+        cout<<"Заполнение закончено."<<endl;
+    }
+    }else{
+        cout<<"Введите 1 или 2:"<<endl;
+        goto backk2;
+    }
+    cout<<"Вот ваше множество(массив):"<<endl;
+    showarray();
+    backk3:
+    instruction3();
+    cin>>operation;
+    if (operation==1 or operation==2 or operation==3 or operation==11 or operation==22 or operation==33){
+        if (operation==1){           
+            for (i=0;i<rst;i++){
+                bulean(i,0);                //булеан(+)
+                cout<<endl;
+            }
+        }
+        if (operation==2){
+            partition();                    //разбиение(-)
+        }
+        if (operation==3){
+            coating();                      //покрытие(-)
+        }
+        if (operation==11 or operation==22 or operation==33){
+            help();
+            goto backk3;
+        }
+    }
+    return 0;
+}
