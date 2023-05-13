@@ -73,7 +73,7 @@ int main()
         }
         cin>>proverka;
         balance+=income;
-        cout<<"Твой баланс -> "<<balance<<endl<<"Твой доход -> "<<income<<endl;
+        cout<<"Твой баланс -> "<<balance<<"$"<<endl<<"Твой доход -> "<<"$"<<income<<endl;
     }
     return 0;
 }
