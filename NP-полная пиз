@@ -99,8 +99,9 @@ int main()
     if (operation==1 or operation==2 or operation==3 or operation==11 or operation==22 or operation==33){
         if (operation==1){           
             for (i=0;i<rst;i++){
+                cout<<"P(A)=[ ";
                 bulean(i,0);                //булеан(+)
-                cout<<endl;
+                cout<<"]"<<endl;
             }
         }
         if (operation==2){
